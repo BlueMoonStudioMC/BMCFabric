@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "studios/bluemoon/mixin/ExampleMixin": {
+      "loadLevel": "Lnet/minecraft/server/MinecraftServer;method_3735()V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "studios/bluemoon/mixin/ExampleMixin": {
+        "loadLevel": "Lnet/minecraft/server/MinecraftServer;method_3735()V"
+      }
+    }
+  }
+}

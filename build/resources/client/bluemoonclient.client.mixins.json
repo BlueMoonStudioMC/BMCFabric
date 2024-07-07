@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "studios.bluemoon.mixin.client",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "LoadingOverlayMixin",
+    "MinecraftMixin",
+    "TitleScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}

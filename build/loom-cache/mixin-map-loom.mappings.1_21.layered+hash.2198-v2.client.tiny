@@ -1,0 +1,2 @@
+v1	named	intermediary
+METHOD	studios/bluemoon/mixin/client/LoadingOverlayMixin	(Lnet/minecraft/client/gui/GuiGraphics;IIIIF)V	drawProgressBar	method_18103
