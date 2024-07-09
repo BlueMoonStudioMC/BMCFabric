@@ -3,9 +3,11 @@
   "package": "studios.bluemoon.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
+    "ClientBrandRetrieverMixin",
     "LoadingOverlayMixin",
     "MinecraftMixin",
-    "TitleScreenMixin"
+    "TitleScreenMixin",
+    "ScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -26,11 +26,15 @@ public class GlShaderUtils implements GlobalConstants {
     private final VertexBuffer vertexBuffer;
     private final ScalableCanvas scalableCanvas;
 
+    InputStream vertexShader = GlShaderUtils.class.getResourceAsStream("/assets/studios/bluemoon/fragment/shader.vert");
+    InputStream fragmentshader = GlShaderUtils.class.getResourceAsStream("/assets/studios/bluemoon/fragment/shader.frag");
+
+
 
     public GlShaderUtils() throws IOException {
         int shaderProgram = GlStateManager.glCreateProgram();
-        GlStateManager.glAttachShader(shaderProgram, compileShader(resourceManager.open(ResourceLocation.fromNamespaceAndPath("studios", "/bluemoon/fragment/shader.vert")), GL30.GL_VERTEX_SHADER));
-        GlStateManager.glAttachShader(shaderProgram, compileShader(resourceManager.open(ResourceLocation.fromNamespaceAndPath( "studios","/bluemoon/fragment/shader.frag")), GL30.GL_FRAGMENT_SHADER));
+        GlStateManager.glAttachShader(shaderProgram, compileShader(vertexShader, GL30.GL_VERTEX_SHADER));
+        GlStateManager.glAttachShader(shaderProgram, compileShader(fragmentshader, GL30.GL_FRAGMENT_SHADER));
         GlStateManager.glLinkProgram(shaderProgram);
         if (GlStateManager.glGetProgrami(shaderProgram, GL30.GL_LINK_STATUS) == 0)
             throw new IllegalStateException("Failed to link shader");
