@@ -12,6 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -19,26 +20,25 @@ import studios.bluemoon.utils.syntaxx.GlShaderUtils;
 
 import java.io.IOException;
 
-import static com.ibm.icu.text.PluralRules.Operand.f;
 
 @Mixin(TitleScreen.class)
 
 public class TitleScreenMixin extends Screen {
     private double time = 0.0D;
     private GlShaderUtils glShaderUtils;
+    @Unique
+    private GlShaderUtils backgroundShader = new GlShaderUtils();
 
-    protected TitleScreenMixin(Component component) {
+    protected TitleScreenMixin(Component component) throws IOException {
         super(component);
     }
 
-    @Inject(method = "renderPanorama", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/PanoramaRenderer;render(Lnet/minecraft/client/gui/GuiGraphics;IIFF)V"))
-    private void renderPanorama(GuiGraphics guiGraphics, float f, CallbackInfo ci) {
-    //BM
-    this.time += f;
-    this.glShaderUtils.setupUniforms((float) this.time / 60);
-    this.glShaderUtils.drawShader(width, height);
-    //BM END
-}
+@Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/TitleScreen;renderPanorama(Lnet/minecraft/client/gui/GuiGraphics;F)V", shift = At.Shift.AFTER), cancellable = true)
+    public void nightly$renderGLShaderBackground(GuiGraphics guiGraphics, int i, int j, float f, CallbackInfo ci) {
+        this.time += f;
+        this.backgroundShader.setupUniforms((float) this.time / 60);
+        this.backgroundShader.drawShader(width, height);
+    }
 @Inject(method = "init", at = @At("TAIL"))
     private void init(CallbackInfo ci) {
     try {
@@ -47,5 +47,6 @@ public class TitleScreenMixin extends Screen {
         throw new RuntimeException(e);
     }
 }
+
 
 }
