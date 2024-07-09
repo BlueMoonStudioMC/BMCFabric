@@ -20,7 +20,7 @@ public class GlShaderUtils implements GlobalConstants {
 
     private final int programID;
     private final int timeUniform;
-//    private final int mouseUniform;
+
     private final int resolutionUniform;
 
     private final VertexBuffer vertexBuffer;

@@ -5,9 +5,11 @@
   "client": [
     "ClientBrandRetrieverMixin",
     "LoadingOverlayMixin",
+    "LogoRendererMixin",
     "MinecraftMixin",
-    "TitleScreenMixin",
-    "ScreenMixin"
+    "ScreenMixin",
+    "SplashRendererMixin",
+    "TitleScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

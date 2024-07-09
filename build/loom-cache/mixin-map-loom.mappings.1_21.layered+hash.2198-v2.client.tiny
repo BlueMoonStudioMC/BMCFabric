@@ -1,3 +1,7 @@
 v1	named	intermediary
 FIELD	studios/bluemoon/mixin/client/ScreenMixin	I	width	field_22789
 FIELD	studios/bluemoon/mixin/client/ScreenMixin	I	height	field_22790
+METHOD	studios/bluemoon/mixin/client/LogoRendererMixin	(Lnet/minecraft/client/gui/GuiGraphics;IFI)V	renderLogo	method_48210
+METHOD	studios/bluemoon/mixin/client/MinecraftMixin	()V	updateTitle	method_24288
+METHOD	studios/bluemoon/mixin/client/SplashRendererMixin	(Lnet/minecraft/client/gui/GuiGraphics;ILnet/minecraft/client/gui/Font;I)V	render	method_51453
+METHOD	studios/bluemoon/mixin/client/TitleScreenMixin	(Lnet/minecraft/client/gui/GuiGraphics;IIF)V	render	method_25394
