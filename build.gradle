@@ -13,6 +13,7 @@ base {
 
 repositories {
 	maven { url 'https://maven.wispforest.io/releases/' }
+	maven {url 'https://jitpack.io'}
 }
 
 loom {
@@ -28,17 +29,23 @@ loom {
 }
 
 dependencies {
+
+	implementation("com.github.caoimhebyrne:KDiscordIPC:0.2.2")
+
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings loom.officialMojangMappings()
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	// Fabric API. This is technically optional, but you probably want it anyway.
+
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "net.fabricmc:fabric-language-kotlin:${project.fabric_kotlin_version}"
 
 	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
+
+	modImplementation 'com.github.immails:discord-game-sdk4j:master-SNAPSHOT'
+	include 'com.github.immails:discord-game-sdk4j:master-SNAPSHOT'
 }
 
 processResources {
@@ -86,6 +93,7 @@ publishing {
 
 	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
 	repositories {
+
 		// Add repositories to publish to here.
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for

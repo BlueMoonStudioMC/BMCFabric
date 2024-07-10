@@ -10,15 +10,16 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import studios.bluemoon.utils.DiscordWebhookSender;
 
+
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
     public MinecraftMixin(Window window) {
         this.window = window;
     }
 
+
     @Inject(at = @At("HEAD"), method = "run")
 	private void init(CallbackInfo info) {
-
 		DiscordWebhookSender.send("The Player " + Minecraft.getInstance().getUser().getName() + " Started the Client", true);
 
 	}
@@ -31,5 +32,7 @@ public class MinecraftMixin {
 	@Overwrite
 	public void updateTitle() {
 		this.window.setTitle("BM || " + SharedConstants.getCurrentVersion().getName());
+
 	}
+
 }

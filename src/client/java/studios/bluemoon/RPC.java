@@ -6,6 +6,7 @@ import de.jcm.discordgamesdk.activity.Activity;
 import net.minecraft.client.Minecraft;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import studios.bluemoon.utils.lists.BooleanList;
 
 import java.time.Instant;
 
@@ -24,17 +25,19 @@ public class RPC {
             try (final Core core = new Core(params)) {
 
                 core.runCallbacks();
-                while (true) {
-                    if (updateRPC("Im Hauptmenü", "Schaut den TitleScreen an") && lastActivityUpdate == 0 || System.currentTimeMillis() -lastActivityUpdate < 20_000) {
-                        core.activityManager().updateActivity(ACTIVITY);
+                if (BooleanList.rpc == true) {
+                    while (true) {
+                        if (updateRPC("Playing", "BlueMoonClient") && lastActivityUpdate == 0 || System.currentTimeMillis() - lastActivityUpdate < 20_000) {
+                            core.activityManager().updateActivity(ACTIVITY);
 
-                        lastActivityUpdate = System.currentTimeMillis();
-                    }
+                            lastActivityUpdate = System.currentTimeMillis();
+                        }
 
-                    try {
-                        Thread.sleep(16);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
+                        try {
+                            Thread.sleep(16);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
 
@@ -85,6 +88,6 @@ public class RPC {
 
     @Contract(pure = true)
     private static @NotNull String getPlayerHeadURL(String uuid, String type, int size) {
-        return "https://api.mineatar.io/" + type + "/" + uuid + "?scale=" + size;  // Fixed query parameter
+        return "https://api.mineatar.io/" + type + "/" + uuid + "?scale=" + size;
     }
 }

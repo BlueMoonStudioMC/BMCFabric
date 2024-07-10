@@ -1,2 +1,9 @@
-package studios.bluemoon.utils.Discord;public class ActivateRPC {
+package studios.bluemoon.utils.Discord;
+
+import studios.bluemoon.utils.lists.BooleanList;
+
+public class ActivateRPC {
+    public static void activateRPC() {
+        BooleanList.rpc = true;
+    }
 }
