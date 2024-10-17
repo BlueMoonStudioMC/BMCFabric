@@ -5,7 +5,6 @@ Soon, our new launcher will become public so you can use it. At the moment, you 
 
 ### Collaborators ⭐
 - [Blue_of_Phoenix_](https://github.com/BlueofPhoenix)
-- [Larrox](https://github.com/copyandbuild)
 
 
 ### Dependencies 📃
